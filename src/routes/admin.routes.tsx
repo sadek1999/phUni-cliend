@@ -6,10 +6,7 @@ import Home from "../pages/Home";
 import { NavLink } from "react-router-dom";
 
 
-type TRoutes={
-  path:string,
-  element:ReactNode
-}
+
 
 type TSidebarItem={
   key:string,
@@ -20,7 +17,7 @@ type TSidebarItem={
 
 
 
-const adminPaths = [
+export const adminPaths = [
   {
     name: "home",
     path: "home",
@@ -28,7 +25,7 @@ const adminPaths = [
   },
   {
     name: "user Management",
-    Children: [
+    children: [
       {
         name: "create-user",
         path: "createUser",
@@ -55,11 +52,11 @@ export const adminSlider=adminPaths.reduce((acc:TSidebarItem[],item)=>{
       label:<NavLink to={`/admin/${item.path}`}>{item.name}</NavLink>
     })
   }
-  if(item.Children){
+  if(item.children){
     acc.push({
       key:item.name,
       label:item.name,
-      children:item.Children.map((child)=>({
+      children:item.children.map((child)=>({
         key:child.name,
         label:<NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>
       }))
@@ -69,23 +66,23 @@ export const adminSlider=adminPaths.reduce((acc:TSidebarItem[],item)=>{
 },[])
 
 
-export const adminRoutes=adminPaths.reduce((acc:TRoutes[],item)=>{
-  if(item.path && item.element){
-    acc.push({
-      path:item.path,
-      element:item.element
-    })
-  }
+// export const adminRoutes=adminPaths.reduce((acc:TRoutes[],item)=>{
+//   if(item.path && item.element){
+//     acc.push({
+//       path:item.path,
+//       element:item.element
+//     })
+//   }
 
-  if(item.Children){
-    item.Children.forEach((child)=>{
-      acc.push({
-        path:child.path,
-        element:child.element
-      })
-    })
-  }
-  return acc
-},[])
+//   if(item.children){
+//     item.children.forEach((child)=>{
+//       acc.push({
+//         path:child.path,
+//         element:child.element
+//       })
+//     })
+//   }
+//   return acc
+// },[])
 
 

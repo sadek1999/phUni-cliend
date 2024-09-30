@@ -1,8 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
-import { adminRoutes } from "./admin.routes";
-import Home from "../pages/Home";
-import { Children } from 'react';
+import { adminPaths } from "./admin.routes";
+import { routesGenerator } from "../utils/rotueGenerator";
+
 
 
 
@@ -15,6 +15,6 @@ export const router = createBrowserRouter([
   {
     path:"/admin",
     element:<App></App>,
-    children:adminRoutes
+    children:routesGenerator(adminPaths)
   }
 ]);

@@ -1,28 +1,10 @@
-import { Layout, Menu, MenuProps } from "antd";
+import { Layout, Menu} from "antd";
 import { Outlet } from "react-router-dom";
 import { adminSlider } from "../../routes/admin.routes";
 
 const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = () => {
-  const items: MenuProps["items"] = [
-    {
-      key: "1",
-      label: "Dashboard",
-    },
-    {
-      key: "2",
-      label: "profile",
-    },
-    {
-      key: "3",
-      label: "user Management",
-      children: [
-        { key: "11", label: "create admin" },
-        { key: "12", label: "create Student" },
-        { key: "13", label: "create Faculty" },
-      ],
-    },
-  ];
+  
   console.log(adminSlider)
   return (
     <Layout style={{ height: "100vh" }}>
