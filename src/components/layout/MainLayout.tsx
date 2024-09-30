@@ -1,4 +1,6 @@
 import { Layout, Menu, MenuProps } from "antd";
+import { Outlet } from "react-router-dom";
+import { adminSlider } from "../../routes/admin.routes";
 
 const { Header, Content, Footer, Sider } = Layout;
 const MainLayout = () => {
@@ -21,6 +23,7 @@ const MainLayout = () => {
       ],
     },
   ];
+  // console.log(adminSlider)
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
@@ -48,7 +51,7 @@ const MainLayout = () => {
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSlider}
         />
       </Sider>
       <Layout>
@@ -60,7 +63,8 @@ const MainLayout = () => {
               minHeight: 360,
             }}
           >
-            <h1>This is main content ...........</h1>
+            <Outlet></Outlet>
+            {/* <h1>This is main content ...........</h1> */}
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
