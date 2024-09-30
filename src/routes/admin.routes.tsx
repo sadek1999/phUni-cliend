@@ -14,7 +14,7 @@ type TRoutes={
 type TSidebarItem={
   key:string,
   label:ReactNode,
-  Children?:TSidebarItem[]
+  children?:TSidebarItem[]
 }
 
 
@@ -59,7 +59,7 @@ export const adminSlider=adminPaths.reduce((acc:TSidebarItem[],item)=>{
     acc.push({
       key:item.name,
       label:item.name,
-      Children:item.Children.map((child)=>({
+      children:item.Children.map((child)=>({
         key:child.name,
         label:<NavLink to={`/admin/${child.path}`}>{child.name}</NavLink>
       }))

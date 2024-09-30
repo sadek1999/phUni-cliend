@@ -23,7 +23,7 @@ const MainLayout = () => {
       ],
     },
   ];
-  // console.log(adminSlider)
+  console.log(adminSlider)
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
