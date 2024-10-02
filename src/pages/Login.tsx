@@ -19,16 +19,16 @@ const Login = () => {
 //  console.log(data)
 //  console.log(error)
 
- const onSubmit= async(data)=>{
+ const onSubmit= async(data:any)=>{
   // console.log(data)
   const userInfo={
     id:data.id,
     password:data.password
   }
    const result= await login(userInfo).unwrap()
-   console.log(verifyToken(result.data.accessToken))
-      // dispatch(loginUser({user:{},token:result.data.accessToken}))
-   console.log(result)
+   const userData=(verifyToken(result.data.accessToken))
+      dispatch(loginUser({user:userData,token:result.data.accessToken}))
+  //  console.log(result)
  }
 
   
