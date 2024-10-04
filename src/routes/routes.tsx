@@ -7,6 +7,7 @@ import Login from "../pages/Login";
 
 
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
   },
   {
     path:"/admin",
-    element:<App></App>,
+    element:<App/>,
     children:routesGenerator(adminPaths)
   },
   {
