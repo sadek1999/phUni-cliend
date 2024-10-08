@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { loginUser, TUser } from "../redux/features/auth/authSlice";
@@ -17,11 +17,11 @@ const Login = () => {
       password: "admin123",
     },
   });
-  const [login, { error }] = useLoginMutation();
+  const [login] = useLoginMutation();
   //  console.log(data)
   //  console.log(error)
 
-  const onSubmit = async (data: any) => {
+  const onSubmit = async (data: FieldValues) => {
     const tostId = toast.loading("loading data ....");
     try {
       const userInfo = {
@@ -36,7 +36,8 @@ const Login = () => {
 
       //  console.log(userData)
     } catch (error) {
-      toast.error("SumThink went error", { id: tostId, duration: 2000 });
+      // console.log(error)
+      toast.error(`SumThink went ${error}`, { id: tostId, duration: 2000 });
     }
   };
 
