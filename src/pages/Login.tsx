@@ -2,7 +2,7 @@ import { Button } from "antd";
 import { FieldValues, useForm } from "react-hook-form";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
-import { loginUser, TUser } from "../redux/features/auth/authSlice";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
@@ -30,7 +30,7 @@ const Login = () => {
       };
       const result = await login(userInfo).unwrap();
       const user = verifyToken(result.data.accessToken) as TUser;
-      dispatch(loginUser({ user: user, token: result.data.accessToken }));
+      dispatch(setUser({ user: user, token: result.data.accessToken }));
       toast.success("log in ", { id: tostId, duration: 2000 });
       navigate(`/${user.role}`);
 

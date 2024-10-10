@@ -7,6 +7,7 @@ const SemesterManagement = () => {
     return (
         <div>
             <h1>This is semesterManagement ........</h1>
+            
         </div>
     );
 };
