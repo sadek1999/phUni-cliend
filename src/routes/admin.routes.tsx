@@ -1,9 +1,14 @@
-
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/createFaculty";
 import CreateUser from "../pages/admin/CreateUser";
 import Home from "../pages/Home";
 import SemesterManagement from "../pages/admin/semesterManagemant/SemesterManagement";
+import CreateAcademicSemester from "../pages/admin/academicMangemant/CreateAcademicSemester";
+import AcademicSemester from "../pages/admin/academicMangemant/AcademicSemester";
+import CreateAcademicFaculty from "../pages/admin/academicMangemant/CreateAcademicFaculty";
+import AcademicFaculty from "../pages/admin/academicMangemant/AcademicFaculty";
+import CreateAcademicDepartment from "../pages/admin/academicMangemant/CreateAcademicDepartment";
+import AcademicDepartment from "../pages/admin/academicMangemant/AcademicDepartment";
 
 export const adminPaths = [
   {
@@ -12,12 +17,40 @@ export const adminPaths = [
     element: <Home></Home>,
   },
   {
-    name:"Semester Management",
-    children:[
-     { name:"Academic Semester",
-      path:'academic-semester',
-      element:<SemesterManagement></SemesterManagement>}
-    ]
+    name: "Academic Management",
+    children: [
+      {
+        name:"Create A. Semester",
+        path:"createAcademicSemester",
+        element:<CreateAcademicSemester/>
+      },
+      {
+        name:"Academic Semester",
+        path:"AcademicSemester",
+        element:<AcademicSemester/>
+      },
+      {
+        name:" Create A Faculty",
+        path:"createAcademicFaculty",
+        element:<CreateAcademicFaculty/>
+      },
+      {
+        name:" Academic Faculty",
+        path:"AcademicFaculty",
+        element:<AcademicFaculty/>
+      },
+      {
+        name:"Create A Department ",
+        path:"createAcademicDepartment",
+        element:<CreateAcademicDepartment/>
+      },
+      {
+        name:"Academic Department ",
+        path:"AcademicDepartment",
+        element:<AcademicDepartment/>
+      },
+      
+    ],
   },
 
   {
@@ -26,17 +59,17 @@ export const adminPaths = [
       {
         name: "create-user",
         path: "createUser",
-        element: <CreateUser></CreateUser>,
+        element: <CreateUser/>,
       },
       {
         name: "create-Admin",
         path: "createAdmin",
-        element: <CreateAdmin></CreateAdmin>,
+        element: <CreateAdmin/>,
       },
       {
         name: "create-Faculty",
         path: "createFaculty",
-        element: <CreateFaculty></CreateFaculty>,
+        element: <CreateFaculty/>,
       },
     ],
   },
