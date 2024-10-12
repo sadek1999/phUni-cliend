@@ -2,13 +2,13 @@ import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/createFaculty";
 import CreateUser from "../pages/admin/CreateUser";
 import Home from "../pages/Home";
-import SemesterManagement from "../pages/admin/semesterManagemant/SemesterManagement";
-import CreateAcademicSemester from "../pages/admin/academicMangemant/CreateAcademicSemester";
-import AcademicSemester from "../pages/admin/academicMangemant/AcademicSemester";
-import CreateAcademicFaculty from "../pages/admin/academicMangemant/CreateAcademicFaculty";
-import AcademicFaculty from "../pages/admin/academicMangemant/AcademicFaculty";
-import CreateAcademicDepartment from "../pages/admin/academicMangemant/CreateAcademicDepartment";
-import AcademicDepartment from "../pages/admin/academicMangemant/AcademicDepartment";
+
+import CreateAcademicSemester from "../pages/admin/academicManagement/CreateAcademicSemester";
+import AcademicSemester from "../pages/admin/academicManagement/AcademicSemester";
+import CreateAcademicFaculty from "../pages/admin/academicManagement/CreateAcademicFaculty";
+import AcademicFaculty from "../pages/admin/academicManagement/AcademicFaculty";
+import CreateAcademicDepartment from "../pages/admin/academicManagement/CreateAcademicDepartment";
+import AcademicDepartment from "../pages/admin/academicManagement/AcademicDepartment";
 
 export const adminPaths = [
   {
