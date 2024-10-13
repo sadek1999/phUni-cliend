@@ -1,6 +1,7 @@
 import React from "react";
 import { Form, Select, Space } from "antd";
 import { Controller } from "react-hook-form";
+import { Color } from "antd/es/color-picker";
 
 type TPHSelect={
   label:string,
@@ -12,7 +13,7 @@ const PHSelect = ({ label, name ,options}:TPHSelect) => {
   return (
     <Controller
       name={name}
-      render={({ field }) => (
+      render={({ field ,fieldState:{error}}) => (
         <Form.Item label={label}>
           <Select 
           size="large"
@@ -21,7 +22,9 @@ const PHSelect = ({ label, name ,options}:TPHSelect) => {
             options={options}
             
           />
+          {error && <small style={{color:"red"}}>{error.message}</small>}
         </Form.Item>
+        
       )}
     />
   );
