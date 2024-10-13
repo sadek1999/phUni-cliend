@@ -10,6 +10,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { academicSemesterSchema } from "../../../schema/academicSemesterSchema";
 import { usePostAcademicSemestersMutation } from "../../../redux/features/admin/academicManagement";
 import { toast } from "sonner";
+import { TResponse } from "../../../Types/global";
 
 
 
@@ -37,10 +38,13 @@ const CreateAcademicSemester = () => {
 // console.log(semesterData)
     try{
 
-      const res= await addAcademicSemester(semesterData);
+      const res= await addAcademicSemester(semesterData) as TResponse;
       if(res.error){
         
         toast.error(res?.error?.data?.errorSources[0].message)
+      }
+      else{
+        toast.success("Successfully create semester")
       }
       // console.log(res?.error?.data?.errorSources[0].message)
       console.log(res)
