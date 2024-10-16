@@ -1,6 +1,6 @@
 import { useGetAcademicSemestersQuery } from "../../../redux/features/admin/academicManagement";
 
-import { Table } from "antd";
+import { Table,Button } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 import { TAcademicSemester } from "../../../Types/academicSemesterTypes";
 import { useState } from "react";
@@ -12,9 +12,15 @@ export type TTableData = Pick<
 >;
 
 const AcademicSemester = () => {
-  const [params,setParams]=useState<TQueryParams[] | undefined>(undefined)
-  const { data: semesterData } = useGetAcademicSemestersQuery(params);
-  // console.log(semesterData);
+  const [params, setParams] = useState<TQueryParams[] | undefined>(undefined);
+  const {
+    data: semesterData,
+    isLoading,
+    isFetching,
+  } = useGetAcademicSemestersQuery(params);
+  console.log("loading" ,isLoading)
+  console.log("Fetch",isFetching)
+
   const tableData = semesterData?.data?.map(
     ({ _id, name, startMonth, endMonth, year }) => ({
       key: _id,
@@ -24,7 +30,6 @@ const AcademicSemester = () => {
       year,
     })
   );
-  
 
   const columns: TableColumnsType<TTableData> = [
     {
@@ -71,7 +76,18 @@ const AcademicSemester = () => {
     {
       title: "End Month",
       dataIndex: "endMonth",
-    },
+    },{
+      title:"Action",
+      key:"x",
+      render:()=>{
+        return (
+          <div>
+         <Button>Update</Button>
+        </div>
+        )
+       
+      }
+    }
   ];
 
   const onChange: TableProps<TTableData>["onChange"] = (
@@ -81,22 +97,23 @@ const AcademicSemester = () => {
     extra
   ) => {
     console.log("params", pagination, filters, sorter, extra);
-    if(extra.action==='filter'){
-      const queryParams:TQueryParams[]=[]
+    if (extra.action === "filter") {
+      const queryParams: TQueryParams[] = [];
       // console.log(filters.name)
-      filters?.name?.forEach(item => {
-        queryParams.push({name:"name",value:item})
+      filters?.name?.forEach((item) => {
+        queryParams.push({ name: "name", value: item });
       });
-     filters.year?.forEach(item=>{
-      queryParams.push({name:"year",value:item})
-     })
-    setParams(queryParams)
+      filters.year?.forEach((item) => {
+        queryParams.push({ name: "year", value: item });
+      });
+      setParams(queryParams);
     }
   };
   // console.log(tableData);
 
   return (
     <Table<TTableData>
+      loading={isLoading}
       columns={columns}
       dataSource={tableData}
       onChange={onChange}

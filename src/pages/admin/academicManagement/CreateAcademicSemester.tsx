@@ -24,7 +24,7 @@ const CreateAcademicSemester = () => {
   
   const [addAcademicSemester]=usePostAcademicSemestersMutation();
    
-  const onsubmit =async (data) => {
+  const onsubmit =async (data:any) => {
     // console.log(data)
     const name = semesterOptions[Number(data.name) - 1].label;
     const semesterData={
@@ -46,7 +46,7 @@ const CreateAcademicSemester = () => {
       else{
         toast.success("Successfully create semester")
       }
-      // console.log(res?.error?.data?.errorSources[0].message)
+      
       console.log(res)
 
 
