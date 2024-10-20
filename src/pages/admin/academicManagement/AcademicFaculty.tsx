@@ -12,8 +12,8 @@ const AcademicFaculty = () => {
     isLoading,
     isFetching,
   } = useGetAcademicFacultyQuery(undefined);
-  console.log(facultyData.data);
-  const tableData = facultyData?.data?.map(({ _id, name }) => ({
+  console.log(facultyData);
+  const tableData = facultyData?.data?.map(({ _id, name }:TFacultyData) => ({
     key: _id,
     name,
   }));
@@ -37,32 +37,32 @@ const AcademicFaculty = () => {
         }
       }
     ];
-  const onChange: TableProps<TFacultyData>["onChange"] = (
-      pagination,
-      filters,
-      sorter,
-      extra
-    ) => {
-      console.log("params", pagination, filters, sorter, extra);
-    //   if (extra.action === "filter") {
-    //     const queryParams: TQueryParams[] = [];
-    //     // console.log(filters.name)
-    //     filters?.name?.forEach((item) => {
-    //       queryParams.push({ name: "name", value: item });
-    //     });
-    //     filters.year?.forEach((item) => {
-    //       queryParams.push({ name: "year", value: item });
-    //     });
-    //     setParams(queryParams);
-    //   }
-    };
+//   const onChange: TableProps<TFacultyData>["onChange"] = (
+//       pagination,
+//       filters,
+//       sorter,
+//       extra
+//     ) => {
+//       console.log("params", pagination, filters, sorter, extra);
+//     //   if (extra.action === "filter") {
+//     //     const queryParams: TQueryParams[] = [];
+//     //     // console.log(filters.name)
+//     //     filters?.name?.forEach((item) => {
+//     //       queryParams.push({ name: "name", value: item });
+//     //     });
+//     //     filters.year?.forEach((item) => {
+//     //       queryParams.push({ name: "year", value: item });
+//     //     });
+//     //     setParams(queryParams);
+//     //   }
+//     };
   return (
    
         <Table<TFacultyData>
       loading={isLoading}
       columns={columns}
       dataSource={tableData}
-      onChange={onChange}
+    //   onChange={onChange}
       showSorterTooltip={{ target: "sorter-icon" }}
     />
   );
