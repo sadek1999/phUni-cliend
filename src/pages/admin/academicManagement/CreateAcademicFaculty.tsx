@@ -8,10 +8,10 @@ import { TResponse } from "../../../Types";
 
 const CreateAcademicFaculty = () => {
   const [addAcademicFaculty] = useAddAcademicFacultyMutation();
-  const onSubmit = async (data) => {
+  const onSubmit = async (data:any) => {
     console.log(data);
     try {
-      const res = await addAcademicFaculty(data) as TResponse;
+      const res = await addAcademicFaculty(data) as TResponse<any>;
       if(res.error){
         
         toast.error(res?.error?.data?.errorSources[0].message)
