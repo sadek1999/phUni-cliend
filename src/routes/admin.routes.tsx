@@ -9,6 +9,12 @@ import CreateAcademicFaculty from "../pages/admin/academicManagement/CreateAcade
 import AcademicFaculty from "../pages/admin/academicManagement/AcademicFaculty";
 import CreateAcademicDepartment from "../pages/admin/academicManagement/CreateAcademicDepartment";
 import AcademicDepartment from "../pages/admin/academicManagement/AcademicDepartment";
+import SemesterRegistration from "../pages/admin/courseManagement/SemesterRegistration";
+import RegisteredSemester from "../pages/admin/courseManagement/RegisteredSemester";
+import CreateCourse from "../pages/admin/courseManagement/CreateCourse";
+import Courses from "../pages/admin/courseManagement/Courses";
+import OfferCourse from "../pages/admin/courseManagement/OfferCourse";
+import OfferedCourse from "../pages/admin/courseManagement/OfferedCourse";
 
 export const adminPaths = [
   {
@@ -51,6 +57,40 @@ export const adminPaths = [
       },
       
     ],
+  },{
+    name:"Course Management",
+    children:[
+      {
+        name:"Semester Registration",
+        path:"semesterRegistration",
+        element:<SemesterRegistration/>
+      },
+      {
+        name:"Registered Semester",
+        path:"registeredSemester",
+        element:<RegisteredSemester/>
+      },
+      {
+        name:"Create Course",
+        path:"createCourse",
+        element:<CreateCourse/>
+      },
+      {
+        name:" Courses",
+        path:"courses",
+        element:<Courses/>
+      },
+      {
+        name:" Offer Course",
+        path:"OfferCourse",
+        element:<OfferCourse/>
+      },
+      {
+        name:" Offered Course",
+        path:"OfferedCourse",
+        element:<OfferedCourse/>
+      },
+    ]
   },
 
   {

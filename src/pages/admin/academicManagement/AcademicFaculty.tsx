@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement";
-import { Button, Table } from "antd";
+import { Button, Table, TableColumnsType } from "antd";
 
 export type TFacultyData={
 _id:string,

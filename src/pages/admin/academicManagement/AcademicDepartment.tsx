@@ -1,8 +1,10 @@
-import React from 'react';
-import { useGetAcademicFacultyQuery } from '../../../redux/features/admin/academicManagement';
+import { useGetDepartmentQuery } from "../../../redux/features/admin/academicManagement";
+
 
 const AcademicDepartment = () => {
-   
+   const {data}=useGetDepartmentQuery(undefined)
+   console.log(data?.data)
+
     return (
         <div>
             <h1>Academic Department</h1>

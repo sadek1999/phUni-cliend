@@ -1,37 +1,64 @@
-import { Button } from "antd";
+import { Button, Col, Flex } from "antd";
 import PHform from "../../../components/from/PHform";
 import PHSelect from "../../../components/from/PHSelect";
-import { monthOptions } from "../../../constent/golbals";
-import { useGetAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement";
+
+import { useAddDepartmentMutation, useGetAcademicFacultyQuery } from "../../../redux/features/admin/academicManagement";
 import PHInput from "../../../components/from/PHInput";
+import { toast } from "sonner";
+import { TResponse } from "../../../Types";
 
 const CreateAcademicDepartment = () => {
   const { data, isLoading } = useGetAcademicFacultyQuery(undefined);
-  console.log(isLoading);
+  const [addAcademicDepartment]=useAddDepartmentMutation()
+  // console.log(isLoading);
   // console.log(data)
-  console.log(data?.data);
+  // console.log(data?.data);
   const facultyOptions = data?.data?.map((items) => ({
     value: items._id,
     label: items.name,
   }));
 
-  const onSubmit = (data) => {
+  const onSubmit =async (data:any) => {
     console.log(data);
+   const academicDepartmentData={
+      name:`Department Of ${data.name}`,
+      academicFaculty:data.academicFaculty
+    }
+
+    try{
+      const res= await addAcademicDepartment(academicDepartmentData) as TResponse<any> ;
+      if(res.error){
+        
+        toast.error(res?.error?.data?.errorSources[0].message)
+      }
+      else{
+        toast.success("Successfully create semester")
+      }
+      console.log(res)
+      
+    }catch(err){
+
+    }
+    
   };
 
-  console.log(facultyOptions);
+
   return (
-    <div>
+    <Flex align="center" justify="center">
+
+   
+    <Col span={7} >
       <PHform onSubmit={onSubmit}>
         <PHSelect
-          label="faculty"
-          name="Academic Department"
+          label="Academic Faculty"
+          name="academicFaculty"
           options={facultyOptions}
         ></PHSelect>
-        <PHInput type="text" label="department" name="Name of Department"></PHInput>
+        <PHInput type="text" label="Name of Department" name="name"></PHInput>
         <Button htmlType="submit">Submit</Button>
       </PHform>
-    </div>
+    </Col>
+    </Flex>
   );
 };
 
