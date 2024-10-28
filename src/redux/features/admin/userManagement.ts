@@ -1,4 +1,5 @@
 import { TQueryParams, TResponseRedux } from "../../../Types";
+import { TFaculty, TStudent } from "../../../Types/userManagementTypes";
 import { baseApi } from "../../api/baseApi";
 
 const userManagementApi = baseApi.injectEndpoints({
@@ -12,13 +13,13 @@ const userManagementApi = baseApi.injectEndpoints({
           });
         }
         return {
-          url: "",
+          url: "/students",
           method: "GET",
           params: params,
         };
       },
 
-      transformResponse: (response: TResponseRedux<any>) => {
+      transformResponse: (response: TResponseRedux<TStudent[]>) => {
         return {
           data: response.data,
           meta: response.meta,
@@ -34,12 +35,12 @@ const userManagementApi = baseApi.injectEndpoints({
           });
         }
         return {
-          url: "",
+          url: "/faculty",
           method: "GET",
           params: params,
         };
       },
-      transformResponse: (response: TResponseRedux<any>) => {
+      transformResponse: (response: TResponseRedux<TFaculty[]>) => {
         return {
           data: response.data,
           meta: response.meta,
@@ -48,11 +49,18 @@ const userManagementApi = baseApi.injectEndpoints({
     }),
     addStudent: builder.mutation({
       query: (data) => ({
-        url: "",
+        url: "/users/create-student",
         method: "POST",
         body: data,
       }),
     }),
+    addFaculty:builder.mutation({
+      query:(data)=>({
+        url:"users/create-faculty",
+        method:"POST",
+        body:data
+      })
+    })
   }),
 });
 
@@ -60,4 +68,5 @@ export const {
   useGetAllStudentsQuery,
   useGetAllFacultyQuery,
   useAddStudentMutation,
+  useAddFacultyMutation,
 } = userManagementApi;
