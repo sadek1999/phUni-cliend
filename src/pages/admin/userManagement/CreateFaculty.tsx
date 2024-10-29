@@ -1,9 +1,9 @@
-
+import React from 'react';
 
 const CreateFaculty = () => {
     return (
         <div>
-            <h1>This is Create faulty pages ..........</h1>
+           <h1>This is CreateFaculty .................</h1> 
         </div>
     );
 };

@@ -1,6 +1,5 @@
-import CreateAdmin from "../pages/admin/CreateAdmin";
-import CreateFaculty from "../pages/admin/createFaculty";
-import CreateUser from "../pages/admin/CreateUser";
+
+
 import Home from "../pages/Home";
 
 import CreateAcademicSemester from "../pages/admin/academicManagement/CreateAcademicSemester";
@@ -15,6 +14,11 @@ import CreateCourse from "../pages/admin/courseManagement/CreateCourse";
 import Courses from "../pages/admin/courseManagement/Courses";
 import OfferCourse from "../pages/admin/courseManagement/OfferCourse";
 import OfferedCourse from "../pages/admin/courseManagement/OfferedCourse";
+import CreateStudents from "../pages/admin/userManagement/CreateStudents";
+import StudentData from "../pages/admin/userManagement/StudentData";
+import CreateAdmin from "../pages/admin/userManagement/CreateAdmin";
+import CreateFaculty from "../pages/admin/userManagement/CreateFaculty";
+import StudentUpdate from "../pages/admin/userManagement/StudentUpdate";
 
 export const adminPaths = [
   {
@@ -97,9 +101,19 @@ export const adminPaths = [
     name: "user Management",
     children: [
       {
-        name: "create-user",
-        path: "createUser",
-        element: <CreateUser/>,
+        name: "Create Student",
+        path: "createStudent",
+        element: <CreateStudents/>,
+      },
+      {
+        name: "Student Details",
+        path: "studentDetails",
+        element: <StudentData/>,
+      },
+      {
+        name: "Update Student",
+        path: "updateStudent",
+        element: <StudentUpdate/>,
       },
       {
         name: "create-Admin",
