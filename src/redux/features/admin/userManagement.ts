@@ -61,20 +61,6 @@ const userManagementApi = baseApi.injectEndpoints({
         body:data
       })
     })
-    addFaculty:builder.mutation({
-      query:(data)=>({
-        url:"users/create-faculty",
-        method:"POST",
-        body:data
-      })
-    })
-    addFaculty:builder.mutation({
-      query:(data)=>({
-        url:"users/create-faculty",
-        method:"POST",
-        body:data
-      })
-    })
   }),
 });
 
